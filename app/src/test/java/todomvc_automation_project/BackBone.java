@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class BackBone {
-    private WebDriver driver;
+    protected WebDriver driver;
     private By toDoListEntryBy = By.className("new-todo");
 
     public BackBone(WebDriver driver) {
