@@ -67,40 +67,35 @@ For each of the popular frameworks, we want to verify the following features:
 
 ##Features to Test (TODO MON)
 
-* Add a new ToDo item
-* Can't add an item with an empty value
-* Can add a multi word-string
-* Check basic punctuation !,."?
-* Check !@#%)*"\~-_ symbols
-* Check primary emojos: :) :( :D :S
-* Check massive character count (>280)
-* Cannot paste over 280 chars
-* Can paste exactly 280 chars
-* Check language native symbols: ẞ大本éñ
-* Check major currencies : $£¥€ 
-* Check can Undo/CtrlZ
-
-* Modify a ToDo item (by double-clicking)
-* If you modify a ToDo item and click Escape during edit, it should cancel the
-modification
-* A ToDo item can be ticked-off (it will appear with a line through it)
-* A completed ToDo item can be unticked again
-* A ToDo item can be reordered by dragging it up or down in the list
-* Delete an incomplete ToDo item
-* Delete a completed ToDo item
-* Status bar displays "0 items left" when there are no items left
-* Status bar displays "1 item left" when there is 1 item left
-* Status bar displays "n items left" when there are >1 items left
-
-* Status bar is hidden when there are no ToDo items in the system
-* Status bar can toggle between Active, All and Completed
-* ToDo items have a 280 character limit
-* When there are any completed items, a "Clear completed" link appears in the
-status bar
-* When the "Clear completed" link is clicked, all completed items are deleted
-* Clicking the down arrow symbol next to the "What needs to be done?" box will
-toggle all items to Completed or Not Completed
-* Can we undo / rescue delete all?
+* Add a new ToDo item (D1, P1)
+* Can't add an item with an empty value (D1, P1)
+* Can add a multi word-string (D1, P1)
+* Check basic punctuation !,."? (D1, P1)
+* Check !@#%)*"\~-_ symbols (D1, P1)
+* Check primary emojos: :) :( :D :S  (D1, P1)
+* Check massive character count (>280) (D1, P1)
+* Cannot paste over 280 chars (D1, P1)
+* Can paste exactly 280 chars (D1, P1)
+* Check language native symbols: ẞ大本éñ (D1, P1)
+* Check major currencies : $£¥€ (D1, P1)
+* Check can Undo/CtrlZ (D1, P1)
+* Modify a ToDo item (by double-clicking) (D1, P1)
+* If you modify a ToDo item and click Escape during edit, it should cancel the modification (D1, P1)
+* A ToDo item can be ticked-off (it will appear with a line through it) (D1, P1)
+* A completed ToDo item can be unticked again (D1, P1)
+* A ToDo item can be reordered by dragging it up or down in the list (we know this will fail, automate later, D4, P4)
+* Delete an incomplete ToDo item (D1, P1)
+* Delete a completed ToDo item (D1, P1)
+* Status bar displays "0 items left" when there are no items left (D1, P1)
+* Status bar displays "1 item left" when there is 1 item left (D1, P1)
+* Status bar displays "n items left" when there are >1 items left (D1, P1)
+* Status bar is hidden when there are no ToDo items in the system (D1, P1)
+* Status bar can toggle between Active, All and Completed (D1, P1)
+* ToDo items have a 280 character limit (D1, P1)
+* When there are any completed items, a "Clear completed" link appears in the status bar (D1, P1)
+* When the "Clear completed" link is clicked, all completed items are deleted (D1, P1)
+* Clicking the down arrow symbol next to the "What needs to be done?" box will toggle all items to Completed or Not Completed (D1, P1)
+* Can we undo / rescue delete all? (D1, P1)
 
 ## Behaviour Testing
 
