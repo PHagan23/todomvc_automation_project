@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EndToEnd {
 
+    // Test Objects that end with CF are testing Core Functionality
+    // Test Objects that end with VT are Value Testing
+
     private static FirefoxDriver driver;
 
     @BeforeEach
@@ -14,14 +17,20 @@ public class EndToEnd {
         driver = new FirefoxDriver();
     }
 
-
     @Test
-    public void addItemToList() throws InterruptedException {
+    public void addItemToListCF() throws InterruptedException {
+        // This Test Script encapsulates CF 1.1 & 1.2
+        // Undo function is OS dependent - Command is used on Mac, Control on Windows
         BackBone backBone = new BackBone(driver);
         backBone.navigate();
         Thread.sleep(3000);
-        backBone.enterTodoItem("Item");
+        backBone.typeToDoItem("Item");
         Thread.sleep(3000);
+        backBone.unDo();
+        Thread.sleep(2000);
+        assertEquals("", backBone.getNewTodoValue());
+        backBone.enterTodoItem("Item");
+        Thread.sleep(1000);
         assertEquals("1 item left", backBone.getTodoItemCount());
     }
 

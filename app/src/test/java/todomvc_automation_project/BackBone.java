@@ -19,9 +19,9 @@ public class BackBone {
         driver.get("https://todomvc.com/examples/backbone");
     }
 
-    public void clickToDoList(){
+    public void typeToDoItem(String singleValue){
         WebElement entryBox = driver.findElement(todoListEntryBy);
-        entryBox.click();
+        entryBox.sendKeys(singleValue);
     }
 
     public void enterTodoItem(String singleValue){
@@ -29,8 +29,20 @@ public class BackBone {
         entryBox.sendKeys(singleValue, Keys.ENTER);
     }
 
+    public void unDo(){
+        // Undo function is OS dependent - Command is used on Mac, Control on Windows
+        // Could be expanded to check users OS and then use conditional flow to choose key press
+        WebElement entryBox = driver.findElement(todoListEntryBy);
+        String s = Keys.chord(Keys.COMMAND, "z");
+        entryBox.sendKeys(s);
+    }
+
     public String getTodoItemCount() {
         return driver.findElement(todoListItemCount).getText();
+    }
+
+    public String getNewTodoValue(){
+        return driver.findElement(todoListEntryBy).getText();
     }
 
     public void clickToggleButton() {
