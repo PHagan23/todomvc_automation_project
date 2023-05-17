@@ -65,9 +65,13 @@ This will simultaneously ensure broad exposure of features to multiple users.
 
 For each of the popular frameworks, we want to verify the following features:
 
-##Features to Test (TODO MON)
+## Core Functionality
 
 * Add a new ToDo item (D1, P1)
+* Modify a ToDo item (by double-clicking) (D1, P1)
+* If you modify a ToDo item and click Escape during edit, it should cancel the modification (D1, P1)
+* A ToDo item can be ticked-off (it will appear with a line through it) (D1, P1)
+* A completed ToDo item can be un ticked again (D1, P1)
 * Can't add an item with an empty value (D1, P1)
 * Can add a multi word-string (D1, P1)
 * Check basic punctuation !,."? (D1, P1)
@@ -79,10 +83,6 @@ For each of the popular frameworks, we want to verify the following features:
 * Check language native symbols: ẞ大本éñ (D1, P1)
 * Check major currencies : $£¥€ (D1, P1)
 * Check can Undo/CtrlZ (D1, P1)
-* Modify a ToDo item (by double-clicking) (D1, P1)
-* If you modify a ToDo item and click Escape during edit, it should cancel the modification (D1, P1)
-* A ToDo item can be ticked-off (it will appear with a line through it) (D1, P1)
-* A completed ToDo item can be unticked again (D1, P1)
 * A ToDo item can be reordered by dragging it up or down in the list (we know this will fail, automate later, D4, P4)
 * Delete an incomplete ToDo item (D1, P1)
 * Delete a completed ToDo item (D1, P1)

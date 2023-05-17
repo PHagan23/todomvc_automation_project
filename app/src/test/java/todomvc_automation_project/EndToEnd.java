@@ -1,32 +1,42 @@
 package todomvc_automation_project;
 
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EndToEnd {
 
     private static FirefoxDriver driver;
 
-    @BeforeAll
-    static void launchBrowser() {
+    @BeforeEach
+    void launchBrowser() {
         driver = new FirefoxDriver();
     }
 
 
     @Test
-    public void test() throws InterruptedException {
+    public void addItemToList() throws InterruptedException {
         BackBone backBone = new BackBone(driver);
         backBone.navigate();
         Thread.sleep(3000);
-        backBone.addToList("Test");
+        backBone.enterTodoItem("Item");
         Thread.sleep(3000);
+        assertEquals("1 item left", backBone.getTodoItemCount());
     }
 
-    @AfterAll
-    static void closeBrowser() {
+    @Test
+    public void removeItemToList() throws InterruptedException {
+        BackBone backBone = new BackBone(driver);
+        backBone.navigate();
+        Thread.sleep(3000);
+        backBone.enterTodoItem("Item");
+        Thread.sleep(3000);
+        backBone.clickToggleButton();
+    }
+
+    @AfterEach
+    void closeBrowser() {
         driver.quit();
     }
 

@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 
 public class BackBone {
     protected WebDriver driver;
-    private By toDoListEntryBy = By.className("new-todo");
+    private By todoListEntryBy = By.className("new-todo");
+    private By todoListItemCount = By.className("todo-count");
+    private By todoListItemToggleButton = By.className("toggle");
 
     public BackBone(WebDriver driver) {
         this.driver = driver;
@@ -18,12 +20,21 @@ public class BackBone {
     }
 
     public void clickToDoList(){
-        WebElement entryBox = driver.findElement(toDoListEntryBy);
+        WebElement entryBox = driver.findElement(todoListEntryBy);
         entryBox.click();
     }
 
-    public void addToList(String singleValue){
-        WebElement entryBox = driver.findElement(toDoListEntryBy);
+    public void enterTodoItem(String singleValue){
+        WebElement entryBox = driver.findElement(todoListEntryBy);
         entryBox.sendKeys(singleValue, Keys.ENTER);
+    }
+
+    public String getTodoItemCount() {
+        return driver.findElement(todoListItemCount).getText();
+    }
+
+    public void clickToggleButton() {
+        WebElement toggleButton = driver.findElement(todoListItemToggleButton);
+        toggleButton.click();
     }
 }
