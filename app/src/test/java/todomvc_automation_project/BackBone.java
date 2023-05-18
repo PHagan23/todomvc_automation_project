@@ -5,6 +5,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BackBone {
     protected WebDriver driver;
@@ -12,6 +17,8 @@ public class BackBone {
     private By todoListItemCount = By.className("todo-count");
     private By todoListItemToggleButton = By.className("toggle");
     private By todoItemSingle = By.className("todo-list");
+    private By pageHeading = By.cssSelector("h1");
+    private By todoListView = By.className("view");
 
     public BackBone(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +46,17 @@ public class BackBone {
         entryBox.sendKeys(s);
     }
 
+    public void copyAndPasteToDoItem(){
+        WebElement entryBox = driver.findElement(todoListEntryBy);
+        String a = Keys.chord(Keys.COMMAND, "a");
+        String c = Keys.chord(Keys.COMMAND, "c");
+        String v = Keys.chord(Keys.COMMAND, "v");
+        entryBox.sendKeys(a, c);
+        entryBox.clear();
+        entryBox.sendKeys(v);
+
+    }
+
     public String getTodoItemCount() {
         return driver.findElement(todoListItemCount).getText();
     }
@@ -60,6 +78,16 @@ public class BackBone {
     public void clickNewTodoSection(){
         WebElement todoSection = driver.findElement(todoListEntryBy);
         todoSection.click();
+    }
+
+    public void waitForPageToLoad(String titleOfPage){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(pageHeading, titleOfPage));
+    }
+
+    public void waitForTodoListEntry(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(todoListView));
     }
 
 }
