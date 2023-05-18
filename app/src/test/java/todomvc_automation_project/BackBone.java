@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class BackBone {
     protected WebDriver driver;
@@ -52,8 +53,9 @@ public class BackBone {
         toggleButton.click();
     }
     public void modifyItem(){
-        WebElement toggleButton = driver.findElement(todoItemSingle);
-        toggleButton.click();
-        toggleButton.click();
+        WebElement todoList = driver.findElement(todoItemSingle);
+        Actions action = new Actions(driver);
+        action.doubleClick(todoList).build().perform();
     }
+
 }
