@@ -52,6 +52,8 @@ public class EndToEnd {
         Thread.sleep(3000);
         backBone.modifyItem();
         Thread.sleep(3000);
+        backBone.editTodoItem();
+        Thread.sleep(3000);
     }
     @AfterEach
     void closeBrowser() {

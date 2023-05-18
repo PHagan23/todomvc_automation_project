@@ -1,5 +1,6 @@
 package todomvc_automation_project;
 
+import org.bouncycastle.asn1.x509.UserNotice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class BackBone {
     private By todoItemSingle = By.className("todo-list");
     private By pageHeading = By.cssSelector("h1");
     private By todoListView = By.className("view");
+    private By editItemBy = By.className("edit");
 
     public BackBone(WebDriver driver) {
         this.driver = driver;
@@ -88,6 +90,11 @@ public class BackBone {
     public void waitForTodoListEntry(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(todoListView));
+    }
+
+    public void editTodoItem(){
+        WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(" modified");
     }
 
 }
