@@ -102,6 +102,10 @@ public class BackBone {
 
     public void editTodoItem(){
         WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(" modified", Keys.ENTER);
+    }
+    public void editTodoItemNNotEntered(){
+        WebElement editItem = driver.findElement(editItemBy);
         editItem.sendKeys(" modified");
     }
     public void pressEscape(){

@@ -54,6 +54,7 @@ public class EndToEnd {
         Thread.sleep(3000);
         backBone.editTodoItem();
         Thread.sleep(3000);
+        assertEquals( "Item modified", backBone.getSingleItem());
     }
 
     @Test
@@ -65,10 +66,11 @@ public class EndToEnd {
         Thread.sleep(3000);
         backBone.modifyItem();
         Thread.sleep(3000);
-        backBone.editTodoItem();
+        backBone.editTodoItemNNotEntered();
         Thread.sleep(3000);
         backBone.pressEscape();
         Thread.sleep((3000));
+        assertEquals( "Item", backBone.getSingleItem());
     }
     @AfterEach
     void closeBrowser() {
