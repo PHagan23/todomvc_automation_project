@@ -31,13 +31,44 @@ public class BackBone {
     public void navigate() {
         driver.get("https://todomvc.com/examples/backbone");
     }
+    public void waitForPageToLoad(String titleOfPage){
+        //Used to wait for the page to load by checking if the 'todos' heading is visible
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.textToBe(pageHeading, titleOfPage));
+    }
 
-    public void typeToDoItem(String singleValue){
+    public String getTodoItemCount() {
+        //Returns the text from the bottom left of the To do list if there is any item within the To do list
+        //Example '1 item left'
+        return driver.findElement(todoListItemCount).getText();
+    }
+
+    public String getNewTodoValue(){
+        //Returns the current entry in the New To do List box
+        //Used in conjunction with undo method
+        return driver.findElement(todoListEntryBy).getText();
+    }
+
+    public String getSingleItem(){
+        //Returns the value of the item within the To do list providing it's the only one
+        //Haven't tested a method for multiple values within the to do list as of now
+        return driver.findElement(todoListSingleItem).getText();
+    }
+
+    public void clickNewTodoSection() {
+        //Clicks on the New To do Item box
+        WebElement todoSection = driver.findElement(todoListEntryBy);
+        todoSection.click();
+    }
+
+        public void typeToDoItem(String singleValue){
+        //Types string into the New To do Item box
         WebElement entryBox = driver.findElement(todoListEntryBy);
         entryBox.sendKeys(singleValue);
     }
 
     public void enterTodoItem(String singleValue){
+        //Types string and enters it into the New To do Item box
         WebElement entryBox = driver.findElement(todoListEntryBy);
         entryBox.sendKeys(singleValue, Keys.ENTER);
     }
@@ -51,6 +82,8 @@ public class BackBone {
     }
 
     public void copyAndPasteToDoItem(){
+        //Copies whatever is written in the New To do entry box, clears it and re-pastes it
+        //Not too reusable - made for a couple of specific tests for character limits on pasting
         WebElement entryBox = driver.findElement(todoListEntryBy);
         String a = Keys.chord(Keys.COMMAND, "a");
         String c = Keys.chord(Keys.COMMAND, "c");
@@ -60,59 +93,11 @@ public class BackBone {
         entryBox.sendKeys(v);
 
     }
-
-    public String getTodoItemCount() {
-        return driver.findElement(todoListItemCount).getText();
-    }
-
-    public String getNewTodoValue(){
-        return driver.findElement(todoListEntryBy).getText();
-    }
-
-    public String getSingleItem(){
-        return driver.findElement(todoListSingleItem).getText();
-    }
-
     public void clickToggleButton() {
+        //Clicks the toggle button on the left hand side of a task that shows it's been completed
         WebElement toggleButton = driver.findElement(todoListItemToggleButton);
         toggleButton.click();
     }
-
-
-    public void clickNewTodoSection(){
-        WebElement todoSection = driver.findElement(todoListEntryBy);
-        todoSection.click();
-    }
-
-    public void waitForPageToLoad(String titleOfPage){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.textToBe(pageHeading, titleOfPage));
-    }
-
-    public void waitForTodoListEntry(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(todoListView));
-    }
-
-    public void modifyItem(){
-        WebElement todoList = driver.findElement(todoItemSingle);
-        Actions action = new Actions(driver);
-        action.doubleClick(todoList).build().perform();
-    }
-
-    public void editTodoItem(){
-        WebElement editItem = driver.findElement(editItemBy);
-        editItem.sendKeys(" modified", Keys.ENTER);
-    }
-    public void editTodoItemNNotEntered(){
-        WebElement editItem = driver.findElement(editItemBy);
-        editItem.sendKeys(" modified");
-    }
-    public void pressEscape(){
-        WebElement editItem = driver.findElement(editItemBy);
-        editItem.sendKeys(Keys.ESCAPE );
-    }
-
     public void pressDeleteButton(){
         //Delete button only visible on item when mouse is hovered over item
         //Move to Element moves the mouse over the single item -- Emulates user action
@@ -121,5 +106,42 @@ public class BackBone {
         Actions action = new Actions(driver);
         action.moveToElement(todoListViewer).perform();
         deleteButt.click();
+    }
+    public void waitForTodoListEntry(){
+        //Waits for an entry into the to do list I think -- Im not sure this actually does anything...
+        //To be reviewed
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(todoListView));
+    }
+
+    public void modifyItem(){
+        //Double-clicks a single item on the list -- unsure how this works with multiple items in the list currently
+        WebElement todoList = driver.findElement(todoItemSingle);
+        Actions action = new Actions(driver);
+        action.doubleClick(todoList).build().perform();
+    }
+
+    public void editTodoItem(){
+        //Adds ' modified' to the end of a single item and then enters it to confirm the change
+        WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(" modified", Keys.ENTER);
+    }
+    public void editTodoItemNNotEntered(){
+        //Adds ' modified' to the end of a single item but doesn't enter it
+        //Used for a specific test on cancelling an edit
+        WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(" modified");
+    }
+    public void pressEscape(){
+        //Presses escape...
+        WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(Keys.ESCAPE );
+    }
+
+
+    public void pressSmileyEmoji(){
+        WebElement entryBox = driver.findElement(todoListEntryBy);
+        String emojiBox = Keys.chord(Keys.COMMAND, Keys.SPACE);
+        entryBox.sendKeys(emojiBox);
     }
 }

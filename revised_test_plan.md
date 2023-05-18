@@ -95,7 +95,7 @@ For each of the popular frameworks, we want to verify the following features:
 * 2.5 Can paste exactly 280 chars (D1, P1)
 * 2.6 Check massive character count (>280) (D1, P1) (DESCOPED - Covered in test 2.4)
 * 2.7 Check basic punctuation !,."? (D1, P1)
-* 2.8 Check !@#%)*"\~-_ symbols (D1, P1)
+* 2.8 Check !@#%)*'\~-_ symbols (D1, P1)
 * 2.9 Check primary emojos: :) :( :D :S  (D1, P1)
 * 2.10 Check language native symbols: ẞ大本éñ (D1, P1)
 * 2.11 Check major currencies : $£¥€ (D1, P1)
