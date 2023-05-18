@@ -72,6 +72,8 @@ public class EndToEnd {
         Thread.sleep((3000));
         assertEquals( "Item", backBone.getSingleItem());
     }
+
+
     @AfterEach
     void closeBrowser() {
         driver.quit();
