@@ -55,6 +55,21 @@ public class EndToEnd {
         backBone.editTodoItem();
         Thread.sleep(3000);
     }
+
+    @Test
+    public void escapeToList() throws InterruptedException {
+        BackBone backBone = new BackBone(driver);
+        backBone.navigate();
+        Thread.sleep(3000);
+        backBone.enterTodoItem("Item");
+        Thread.sleep(3000);
+        backBone.modifyItem();
+        Thread.sleep(3000);
+        backBone.editTodoItem();
+        Thread.sleep(3000);
+        backBone.pressEscape();
+        Thread.sleep((3000));
+    }
     @AfterEach
     void closeBrowser() {
         driver.quit();

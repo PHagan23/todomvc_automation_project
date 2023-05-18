@@ -71,11 +71,7 @@ public class BackBone {
         WebElement toggleButton = driver.findElement(todoListItemToggleButton);
         toggleButton.click();
     }
-    public void modifyItem(){
-        WebElement todoList = driver.findElement(todoItemSingle);
-        Actions action = new Actions(driver);
-        action.doubleClick(todoList).build().perform();
-    }
+
 
     public void clickNewTodoSection(){
         WebElement todoSection = driver.findElement(todoListEntryBy);
@@ -92,9 +88,18 @@ public class BackBone {
         wait.until(ExpectedConditions.visibilityOfElementLocated(todoListView));
     }
 
+    public void modifyItem(){
+        WebElement todoList = driver.findElement(todoItemSingle);
+        Actions action = new Actions(driver);
+        action.doubleClick(todoList).build().perform();
+    }
+
     public void editTodoItem(){
         WebElement editItem = driver.findElement(editItemBy);
         editItem.sendKeys(" modified");
     }
-
+    public void pressEscape(){
+        WebElement editItem = driver.findElement(editItemBy);
+        editItem.sendKeys(Keys.ESCAPE );
+    }
 }
