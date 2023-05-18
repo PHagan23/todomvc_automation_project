@@ -11,7 +11,6 @@ public class BackBone {
     private By todoListEntryBy = By.className("new-todo");
     private By todoListItemCount = By.className("todo-count");
     private By todoListItemToggleButton = By.className("toggle");
-
     private By todoItemSingle = By.className("todo-list");
 
     public BackBone(WebDriver driver) {
@@ -56,6 +55,11 @@ public class BackBone {
         WebElement todoList = driver.findElement(todoItemSingle);
         Actions action = new Actions(driver);
         action.doubleClick(todoList).build().perform();
+    }
+
+    public void clickNewTodoSection(){
+        WebElement todoSection = driver.findElement(todoListEntryBy);
+        todoSection.click();
     }
 
 }
