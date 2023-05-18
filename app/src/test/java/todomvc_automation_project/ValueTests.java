@@ -98,10 +98,25 @@ public class ValueTests {
 
     @Test
     public void basicPunctuationCheckVT(){
+        //covers 2.7 on test plan by checking the following punctuation individually - !,."?
         BackBone backBone = new BackBone(driver);
         backBone.navigate();
         backBone.waitForPageToLoad("todos");
-        backBone.enterTodoItem("!,.'?");
+        backBone.enterTodoItem("!");
+        assertEquals("!", backBone.getSingleItem());
+        backBone.pressDeleteButton();
+        backBone.enterTodoItem(",");
+        assertEquals(",", backBone.getSingleItem());
+        backBone.pressDeleteButton();
+        backBone.enterTodoItem(".");
+        assertEquals(".", backBone.getSingleItem());
+        backBone.pressDeleteButton();
+        backBone.enterTodoItem("\"");
+        assertEquals("\"", backBone.getSingleItem());
+        backBone.pressDeleteButton();
+        backBone.enterTodoItem("?");
+        assertEquals("?", backBone.getSingleItem());
+
     }
 
     @AfterEach

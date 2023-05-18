@@ -21,6 +21,8 @@ public class BackBone {
     private By pageHeading = By.cssSelector("h1");
     private By todoListView = By.className("view");
     private By editItemBy = By.className("edit");
+    private By todoListSingleItem = By.className("view");
+    private By deleteButton = By.className("destroy");
 
     public BackBone(WebDriver driver) {
         this.driver = driver;
@@ -67,6 +69,10 @@ public class BackBone {
         return driver.findElement(todoListEntryBy).getText();
     }
 
+    public String getSingleItem(){
+        return driver.findElement(todoListSingleItem).getText();
+    }
+
     public void clickToggleButton() {
         WebElement toggleButton = driver.findElement(todoListItemToggleButton);
         toggleButton.click();
@@ -101,5 +107,15 @@ public class BackBone {
     public void pressEscape(){
         WebElement editItem = driver.findElement(editItemBy);
         editItem.sendKeys(Keys.ESCAPE );
+    }
+
+    public void pressDeleteButton(){
+        //Delete button only visible on item when mouse is hovered over item
+        //Move to Element moves the mouse over the single item -- Emulates user action
+        WebElement deleteButt = driver.findElement(deleteButton);
+        WebElement todoListViewer = driver.findElement(todoListView);
+        Actions action = new Actions(driver);
+        action.moveToElement(todoListViewer).perform();
+        deleteButt.click();
     }
 }
