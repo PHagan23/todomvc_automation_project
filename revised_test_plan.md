@@ -84,7 +84,7 @@ For each of the popular frameworks, we want to verify the following features:
 * 1.15 When there are any completed items, a "Clear completed" link appears in the status bar (D1, P1)
 * 1.16 When the "Clear completed" link is clicked, all completed items are deleted (D1, P1)
 * 1.17 Clicking the down arrow symbol next to the "What needs to be done?" box will toggle all items to Completed or Not Completed (D1, P1)
-* 1.18 Can we undo / rescue delete all? (D1, P1)
+* 1.18 Can we undo / rescue delete all? (D1, P1) (Not implemented -- Descoped)
 
 ## Value Testing
 

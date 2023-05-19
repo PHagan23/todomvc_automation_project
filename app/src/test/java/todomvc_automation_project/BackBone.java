@@ -23,6 +23,8 @@ public class BackBone {
     private By editItemBy = By.className("edit");
     private By todoListSingleItem = By.className("view");
     private By deleteButton = By.className("destroy");
+    private By clearCompletedButton = By.className("clear-completed");
+    private By toggleAllButton = By.xpath("/html/body/section/section/label");
 
     public BackBone(WebDriver driver) {
         this.driver = driver;
@@ -53,6 +55,11 @@ public class BackBone {
         //Returns the value of the item within the To do list providing it's the only one
         //Haven't tested a method for multiple values within the to do list as of now
         return driver.findElement(todoListSingleItem).getText();
+    }
+
+    public boolean checkIfClearCompletedButtonIsPresent(){
+        WebElement clearCompletedButt = driver.findElement(clearCompletedButton);
+        return clearCompletedButt.isDisplayed();
     }
 
     public void clickNewTodoSection() {
@@ -98,6 +105,10 @@ public class BackBone {
         WebElement toggleButton = driver.findElement(todoListItemToggleButton);
         toggleButton.click();
     }
+    public void clickToggleAll(){
+        WebElement toggleAllButt = driver.findElement(toggleAllButton);
+        toggleAllButt.click();
+    }
     public void pressDeleteButton(){
         //Delete button only visible on item when mouse is hovered over item
         //Move to Element moves the mouse over the single item -- Emulates user action
@@ -132,14 +143,17 @@ public class BackBone {
         WebElement editItem = driver.findElement(editItemBy);
         editItem.sendKeys(" modified");
     }
+    public void clickClearCompletedButton(){
+        WebElement clearCompletedButt = driver.findElement(clearCompletedButton);
+        clearCompletedButt.click();
+    }
     public void pressEscape(){
         //Presses escape...
         WebElement editItem = driver.findElement(editItemBy);
         editItem.sendKeys(Keys.ESCAPE );
     }
-
-
     public void pressSmileyEmoji(){
+        //Unused currently -- needs worked on
         WebElement entryBox = driver.findElement(todoListEntryBy);
         String emojiBox = Keys.chord(Keys.COMMAND, Keys.SPACE);
         entryBox.sendKeys(emojiBox);

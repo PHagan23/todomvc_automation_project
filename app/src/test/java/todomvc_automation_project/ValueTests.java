@@ -9,6 +9,8 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Made in tandem with end-to-end and then copied over -- kept for keeping 'Value Tests' separate for the future
+
 public class ValueTests {
 
     private static FirefoxDriver driver;
@@ -20,11 +22,11 @@ public class ValueTests {
     String twoEightyCharacters = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. " +
             "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient " +
             "montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. " +
-            "Nulla consequat mas";
+            "Nulla consequat mas"; //Used in 2.5
     String twoEightyOneCharacters = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. " +
             "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient " +
             "montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. " +
-            "Nulla consequat maso";
+            "Nulla consequat maso"; //Used in 2.3 + 2.4
 
 
     @BeforeEach
@@ -128,7 +130,7 @@ public class ValueTests {
 
     @Test
     @Disabled
-    public void emojiSymbolCheck() throws InterruptedException {
+    public void emojiSymbolCheckVT() throws InterruptedException {
         //covers 2.9 on test plan, only checking one as I think this is a silly test but I get paid to automate
         //can't get this to work currently - low priority, will look at if there is time
         BackBone backBone = new BackBone(driver);
